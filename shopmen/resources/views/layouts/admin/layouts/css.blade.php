@@ -30,8 +30,13 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <link rel="stylesheet" href="{{asset('adminplugins/iCheck/all.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/plugins/iCheck/all.css')}}">
   <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="{{asset('adminbower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}">
+  
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  <!-- Theme style -->
 
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
