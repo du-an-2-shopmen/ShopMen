@@ -43,9 +43,12 @@ class ProductController extends Controller
     		$model=new Product();
 
     	}
-       
+        $model->slug=str::slug($request->name.'-'.microtime());
+        $model->promotion_price=($request->sale_percent/100)*$request->price;
+        $model->fill($request->all());
+        $model->save();
     	if($request->hasFile('image')) {
-            $allowedfileExtension=['jpg','png'];
+            $allowedfileExtension=['jpg','png','jpeg','gif','bmp'];
             $files = $request->file('image');
             // flag xem có thực hiện lưu DB không. Mặc định là có
             $exe_flg = true;
@@ -77,21 +80,22 @@ class ProductController extends Controller
                 
                 $fileNameToStore = str::slug($filename."-".str::random(10)).'.'.$extension;
                 
-                $img=$image->move('img/', $fileNameToStore);
+                $img=$image->move('img/uploads/products', $fileNameToStore);
                 Image::create([
                       
-                        'filename' => $img
+                        'filename' => $img,
+                        'product_id'=>$model->id,
                     ]);
                 }
-                echo "Upload successfully";
+              
             } else {
-                echo "Falied to upload. Only accept jpg, png image.";
+                return redirect(route('add.product'))->withErrors([
+                        'image' => 'image ko dung định dạng!'
+                    ]);
             }
         }
-        die();
-        $model->slug=str_slug($request->name.'-'.microtime());
-        $model->fill($request->all());
-        $model->save();
+        // die();
+       
         return redirect(route('list.product'));
     }
    

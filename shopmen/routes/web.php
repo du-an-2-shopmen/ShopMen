@@ -52,4 +52,13 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('delete/{class}','Admin\productController@delete')->name('delete.product');
 		Route::post('add-and-up','Admin\productController@save')->name('save.product');
 	});
+	Route::group(['prefix'=>'user'],function(){
+		Route::get('list','Admin\UserController@list')->name('list.user');
+		Route::get('add','Admin\UserController@add')->name('add.user');
+		Route::get('up/{id}','Admin\UserController@getup')->name('up.user');
+		Route::get('delete/{class}','Admin\UserController@delete')->name('delete.user');
+		Route::post('add-and-up','Admin\UserController@save')->name('save.user');
+		Route::post('user-active','Admin\UserController@active')->name('active.user');
+	
+	});
 });

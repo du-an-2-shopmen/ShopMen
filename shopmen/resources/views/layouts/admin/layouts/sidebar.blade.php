@@ -125,8 +125,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-           <li><a href="pages/UI/general.html"><i class="fa fa-users"></i> Tất cả user</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa  fa-user-plus"></i>Thêm mới user </a></li>
+           <li><a href="{{route('list.user')}}"><i class="fa fa-users"></i> Tất cả user</a></li>
+            <li><a href="{{route('add.user')}}"><i class="fa  fa-user-plus"></i>Thêm mới user </a></li>
             
             
           </ul>

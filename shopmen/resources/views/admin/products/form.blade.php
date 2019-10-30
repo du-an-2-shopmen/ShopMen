@@ -36,7 +36,11 @@
                                             <div class="col-form">
                                                 
                                                 <input type="file" name="image[]" id="asgnmnt_file" class="form-control" onchange="fileSelected(this)" multiple/>
-                                                @if(count($errors)>0)
+
+                                            
+
+                                            
+                                                @if($errors->any())
                                                     <span class="text-danger">{{$errors->first('image')}}</span>
                                                 @endif
                                             </div>
@@ -118,7 +122,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nguồn hàng</label>
                                     <div class="col-sm-12">
-                                        <input class="form-control is-valid"  id="stocks" name="source" type="number" value="{{$product->source}}">
+                                        <input class="form-control is-valid"  id="stocks" name="source" type="type" value="{{$product->source}}">
                                         @if(count($errors)>0)
                                                     <span class="text-danger">{{$errors->first('source')}}</span>
                                                 @endif
@@ -171,6 +175,7 @@
     function fileSelected(inputData){
     document.getElementById('asgnmnt_file_img').src = window.URL.createObjectURL(inputData.files[0])
     }
+
     </script>
 @endsection
 

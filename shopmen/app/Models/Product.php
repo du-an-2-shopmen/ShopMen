@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $table='products';
 	
-    protected $fillable = ['name', 'slug', 'category_id','price','sale_percent','stocks','is_active','description','promotion_price','short_desc'];
+    protected $fillable = ['name', 'slug', 'category_id','price','sale_percent','stocks','is_active','description','promotion_price','short_desc','source'];
     public function cate(){
     	return $this->belongsto('App\Models\Category','category_id');
     }
