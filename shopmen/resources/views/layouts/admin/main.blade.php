@@ -57,6 +57,6 @@
 
 <!-- jQuery 3 -->
 @include('layouts.admin.layouts.js')
-
+@yield('js')
 </body>
 </html>

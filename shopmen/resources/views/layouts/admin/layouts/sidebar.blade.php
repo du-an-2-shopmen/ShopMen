@@ -56,8 +56,8 @@
             </span>
           </a> 
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-file-word-o"></i>Tất các bài viết</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-pencil-square-o"></i> Thêm bài viết</a></li>
+            <li><a href="{{route('list.news')}}"><i class="fa fa-file-word-o"></i>Tất các bài viết</a></li>
+            <li><a href="{{route('list.add')}}"><i class="fa fa-pencil-square-o"></i> Thêm bài viết</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -82,8 +82,8 @@
             </span>
           </a> 
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-file-text-o"></i>Danh sách tất cả danh mục</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-pencil-square-o"></i> Thêm mới danh mục</a></li>
+            <li><a href="{{route('list.cate')}}"><i class="fa fa-file-text-o"></i>Danh sách tất cả danh mục</a></li>
+            <li><a href="{{route('add.cate')}}"><i class="fa fa-pencil-square-o"></i> Thêm mới danh mục</a></li>
           </ul>
         </li>
         
@@ -96,8 +96,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> Tất cả sản phẩm</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-pencil-square-o"></i> Thêm mới sản phẩm</a></li>
+            <li><a href="{{route('list.product')}}"><i class="fa fa-circle-o"></i> Tất cả sản phẩm</a></li>
+            <li><a href="{{route('list.product')}}"><i class="fa fa-pencil-square-o"></i> Thêm mới sản phẩm</a></li>
             
           </ul>
         </li>

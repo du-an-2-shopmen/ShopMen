@@ -38,4 +38,11 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('delete/{class}','Admin\CategoryController@delete')->name('delete.cate');
 		Route::post('add-and-up','Admin\CategoryController@save')->name('save.cate');
 	});
+	Route::group(['prefix'=>'news'],function(){
+		Route::get('list','Admin\PostController@list')->name('list.news');
+		Route::get('add','Admin\PostController@add')->name('add.news');
+		Route::get('up/{id}','Admin\PostController@getup')->name('up.news');
+		Route::get('delete/{class}','Admin\PostController@delete')->name('delete.news');
+		Route::post('add-and-up','Admin\PostController@save')->name('save.news');
+	});
 });
