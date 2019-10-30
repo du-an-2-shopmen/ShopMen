@@ -42,7 +42,7 @@
                     
                     
                 </div>
-                
+                @if(!isset($user->password))
                  <div class="col-md-12">
 
                     <label>Password</label>
@@ -54,7 +54,7 @@
                     @endif                           
                                             </span>
                 </div>
-              
+              @endif
 
                 
                 
