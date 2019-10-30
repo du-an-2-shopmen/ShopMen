@@ -1,6 +1,6 @@
 @extends('layouts.admin.main')
 @php
-	$title = $product->id == null ? "Thêm bài viết" : "Sửa bài viết";
+	$title = $product->id == null ? "Thêm Sản phẩm mới" : "Sửa sản phẩm";
 @endphp
 @section('title', $title)
 @section('page',$title)
@@ -106,7 +106,7 @@
                                 </div>
     							
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">so luong</label>
+                                    <label class="col-sm-2 col-form-label">số lượng</label>
                                     <div class="col-sm-12">
                                         <input class="form-control is-valid"  id="stocks" name="stocks" type="number" value="{{$product->stocks}}">
                                         @if(count($errors)>0)
@@ -115,9 +115,24 @@
                                     </div>
                                     
                                 </div>
-
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Nguồn hàng</label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control is-valid"  id="stocks" name="source" type="number" value="{{$product->source}}">
+                                        @if(count($errors)>0)
+                                                    <span class="text-danger">{{$errors->first('source')}}</span>
+                                                @endif
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-2 col-form-label">Mô Tả ngắn</label>
+                                  <div class="col-sm-12">
+                                  <textarea class="form-control" rows="3" name="short_desc">{!! $product->short_desc !!}</textarea>
+                                  </div>
+                                </div>
     							<div class="form-group row">
-    								<label class="col-sm-2 col-form-label">Mô Tả</label>
+    								<label class="col-sm-2 col-form-label">Nội dung</label>
     								<div class="col-sm-12">
     								
     								<textarea id="editor1" class="form-control" rows="10" cols="80" name="description">{!! $product->description !!}</textarea>

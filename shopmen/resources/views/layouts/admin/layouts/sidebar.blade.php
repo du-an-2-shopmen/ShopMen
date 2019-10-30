@@ -57,7 +57,7 @@
           </a> 
           <ul class="treeview-menu">
             <li><a href="{{route('list.news')}}"><i class="fa fa-file-word-o"></i>Tất các bài viết</a></li>
-            <li><a href="{{route('list.add')}}"><i class="fa fa-pencil-square-o"></i> Thêm bài viết</a></li>
+            <li><a href="{{route('add.news')}}"><i class="fa fa-pencil-square-o"></i> Thêm bài viết</a></li>
           </ul>
         </li>
         <li class="treeview">

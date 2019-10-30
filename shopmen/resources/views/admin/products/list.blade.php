@@ -16,7 +16,7 @@
                   <th>Price</th>
                   <th>image</th>
                   <th>Category</th>
-                  <th><a href="{{route('add.product')}}" class="btn btn-app" class="btn btn-success"><i class="fas fa-plus-square" style="font-size: 20px; text-align: center;"></i><br>Add New</a></th>
+                  <th><a href="{{route('add.product')}}" class="btn btn-app"><i class="fa fa-plus-square"></i>Add New</a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,7 +28,7 @@
 		                  <td>{{$all->price}}</td>
 		                  <td><img src="{{asset($all->images)}}" width="50px"></td>
 		                  <td>{{isset($all->cate->name)?$all->cate->name:'null'}}</td> 
-		                  <td><a href="{{route('up.product',$all->id)}}" class="btn btn-app" class="btn btn-success"><i class="fa fa-edit"></i>Edit</a> <a onclick="return confirmDel()" href="{{route('delete.product',$all->id)}}" class="btn btn-app"><i class="fas fa-trash-alt" style="font-size: 20px; text-align: center;"></i><br>Delete</a></td>
+		                  <td><a href="{{route('up.product',$all->id)}}" class="btn btn-app" class="btn btn-success"><i class="fa fa-edit"></i>Edit</a> <a onclick="return confirmDel()" href="{{route('delete.product',$all->id)}}" class="btn btn-app"><i class="fa fa-trash-alt" ></i>Delete</a></td>
 		                </tr>
 		            
                 	@endforeach

@@ -45,4 +45,11 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('delete/{class}','Admin\PostController@delete')->name('delete.news');
 		Route::post('add-and-up','Admin\PostController@save')->name('save.news');
 	});
+	Route::group(['prefix'=>'product'],function(){
+		Route::get('list','Admin\productController@list')->name('list.product');
+		Route::get('add','Admin\productController@add')->name('add.product');
+		Route::get('up/{id}','Admin\productController@getup')->name('up.product');
+		Route::get('delete/{class}','Admin\productController@delete')->name('delete.product');
+		Route::post('add-and-up','Admin\productController@save')->name('save.product');
+	});
 });

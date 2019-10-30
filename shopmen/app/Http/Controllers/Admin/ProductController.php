@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Image;
 use App\Http\Requests\ClassProductRequest;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
     
@@ -18,17 +20,17 @@ class ProductController extends Controller
         
     	$products=Product::all();
     	
-    	return view('admin.product.list',compact('products','cates'));
+    	return view('admin.products.list',compact('products','cates'));
     }
     public function add(){
     	$product=new Product();
     	$cates=Category::all();
-    	return view('admin.product.form',compact('product','cates'));
+    	return view('admin.products.form',compact('product','cates'));
     }
     public function getup($id){
     	$product=Product::find($id);
     	$cates=Category::all();
-    	return view('admin.product.form',compact('product','cates'));
+    	return view('admin.products.form',compact('product','cates'));
     }
     public function delete(Product $class){
         $class->delete();
@@ -41,29 +43,52 @@ class ProductController extends Controller
     		$model=new Product();
 
     	}
-        
-    	// if ($request->hasFile('image')>0) {
-     //        // lay ra duoi anhs
-     //        $ext = $request->image->extension();
+       
+    	if($request->hasFile('image')) {
+            $allowedfileExtension=['jpg','png'];
+            $files = $request->file('image');
+            // flag xem có thực hiện lưu DB không. Mặc định là có
+            $exe_flg = true;
+            // kiểm tra tất cả các files xem có đuôi mở rộng đúng không
+            foreach($files as $file) {
+                //lấy đuôi anh jpg,png..
+                $extension = $file->getClientOriginalExtension();
+                // kiem tra dinh dạng ảnh
+                $check=in_array($extension,$allowedfileExtension);
 
-     //        // lay ten anh go
-     //        $filename = $request->image->getClientOriginalName();
-
-     //        // sinh ra ten anh moi theo dang slug
-     //        $filename = str_slug(str_replace("." . $ext, "", $filename));
-            
-     //        // ten anh + string random + duoi
-     //        $filename = $filename . "-" . str_random(20) . "." . $ext;
-     //        $file=$request->file('image');
-     //        $model->images =$file->move("img/uploads/products",$filename);
-     //    }else if(isset($request->anh)){
-     //     $model->images=$request->anh;
-     //    }else{
-     //       return redirect(route('add.product'))->withErrors([
-     //        'image' => 'Vui lòng chọn'
-     //        ]); 
-     //    }
-        
+                if(!$check) {
+                    // nếu có file nào không đúng đuôi mở rộng thì đổi flag thành false
+                    $exe_flg = false;
+                    break;
+                }
+            } 
+            // nếu không có file nào vi phạm validate thì tiến hành lưu DB
+            if($exe_flg) {
+                
+                
+                // duyệt từng ảnh và thực hiện lưu
+                foreach ($files as $image) {
+                    // lay ten anh gốc gôm cả đuôi ảnh
+                $filenameWithExt = $image->getClientOriginalName();
+                // lấy tên anh;
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+               //lấy đuôi anh jpg,png..
+                $extension = $image->getClientOriginalExtension();
+                
+                $fileNameToStore = str::slug($filename."-".str::random(10)).'.'.$extension;
+                
+                $img=$image->move('img/', $fileNameToStore);
+                Image::create([
+                      
+                        'filename' => $img
+                    ]);
+                }
+                echo "Upload successfully";
+            } else {
+                echo "Falied to upload. Only accept jpg, png image.";
+            }
+        }
+        die();
         $model->slug=str_slug($request->name.'-'.microtime());
         $model->fill($request->all());
         $model->save();
